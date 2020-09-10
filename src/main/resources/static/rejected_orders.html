@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<style>
+
+    .header {
+        padding: 0.1px;
+        text-align: center;
+        background: #6B85EC;
+        color: white;
+        font-size: 7px;
+    }
+
+
+
+    .Marquee-box {
+        position: relative;
+        display: inline-block;
+        width: 1500px;
+        height: 34px;
+    }
+    .MyMarquee {
+        text-align: center;
+        font-style: italic;
+        font-weight: bold;
+        width: 100%;
+        height: 100%;
+        font-size: 22px;
+        border: 1px solid #E3D7D7;
+        color: #FFFFFF;
+        font-family: Arial, Helvetica, sans-serif;
+        vertical-align: middle;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background-color: #837EE8;
+
+    }
+    .MyMarquee div {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .MyMarquee a, .MyMarquee img {
+        display: inline-block;
+        text-decoration: underline;
+        color: #FFFFFF;
+        vertical-align: middle;
+    }
+
+    caption {
+        display: table-caption;
+        text-align: center;
+        font-weight: bold;
+    }
+    .table-wrapper
+    {
+        overflow: auto;
+    }
+
+    #myTable{
+        font-family: 'helvetica neue',helvetica,arial,'lucida grande',sans-serif;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #myTable td{
+        border: solid 1px #A6BEF0;
+        padding: 10px;
+        font-size: 12px;
+        text-align: center;
+    }
+    #myTable tr{
+        background-color: #F7FEFF;
+        color: #000000;
+        overflow-y: scroll;
+    }
+    #myTable tr:hover{
+        background-color: #FFFFFF;
+        color: #000000;
+    }
+    #myTable th{
+        border: solid 1px #BFBFBF;
+        padding: 10px;
+        color: #000000;
+        background-color: #D4D4D4;
+        text-align: center;
+        font-size: 12px;
+    }
+
+
+    footer {
+        text-align: center;
+        padding: 3px;
+        background-color: #6B85EC;
+        color: white;
+
+
+        height: 52px;
+
+
+    }
+    .my-custom-scrollbar {
+        position: relative;
+        height: 455px;
+        overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+        display: block;
+        overflow: auto;
+    }
+</style>
+
+
+<body>
+
+<div class="header">
+    <h1>Order Matching System</h1>
+</div>
+<p>  </p>
+<div align="center">
+    <a href="#" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-refresh"></span> Refresh</a>
+
+    <a href="#" class="btn btn-info btn-sm">
+        <span class=""></span>Start System</a>
+
+    <a href="#" class="btn btn-info btn-sm">
+        <span class=""></span>+ New Order</a>
+
+    <a href="#" class="btn btn-info btn-sm">
+        <span class=""></span>Pending Orders</a>
+
+    <a href="#" class="btn btn-info btn-sm">
+        <span class=""></span>Successful Trades</a>
+</div>
+<p>  </p>
+<div class="Marquee-box">
+    <marquee class="MyMarquee" id="my_marquee" direction="left" behavior="7" scrollamount="10" onmouseover="this.stop()" onmouseout="this.start()">
+        <div>Microsoft Stock:</div>
+        <div>Current Price:</div>
+        <div>$ XXX</div>
+        <div>Last Bid:</div>
+        <div>$ XXX</div>
+        <div>Last Ask:</div>
+        <div>$ XXX</div>
+    </marquee>
+</div>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table id="myTable" width="80%" >
+        <caption>Rejected Orders</caption>
+        <thead>
+        <tr>
+            <th scope="col">Timestamp</th>
+            <th scope="col">OrderID</th>
+            <th scope="col">Category</th>
+            <th scope="col">Type</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>Row1 - Column 1</td>
+            <td>Row1 - Column 2</td>
+            <td>Row1 - Column 3</td>
+            <td>Row1 - Column 4</td>
+            <td>Row1 - Column 5</td>
+            <td>Row1 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row2 - Column 1</td>
+            <td>Row2 - Column 2</td>
+            <td>Row2 - Column 3</td>
+            <td>Row2 - Column 4</td>
+            <td>Row2 - Column 5</td>
+            <td>Row2 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row3 - Column 1</td>
+            <td>Row3 - Column 2</td>
+            <td>Row3 - Column 3</td>
+            <td>Row3 - Column 4</td>
+            <td>Row3 - Column 5</td>
+            <td>Row3 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row4 - Column 1</td>
+            <td>Row4 - Column 2</td>
+            <td>Row4 - Column 3</td>
+            <td>Row4 - Column 4</td>
+            <td>Row4 - Column 5</td>
+            <td>Row4 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row5 - Column 1</td>
+            <td>Row5 - Column 2</td>
+            <td>Row5 - Column 3</td>
+            <td>Row5 - Column 4</td>
+            <td>Row5 - Column 5</td>
+            <td>Row5 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row6 - Column 1</td>
+            <td>Row6 - Column 2</td>
+            <td>Row6 - Column 3</td>
+            <td>Row6 - Column 4</td>
+            <td>Row6 - Column 5</td>
+            <td>Row6 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row7 - Column 1</td>
+            <td>Row7 - Column 2</td>
+            <td>Row7 - Column 3</td>
+            <td>Row7 - Column 4</td>
+            <td>Row7 - Column 5</td>
+            <td>Row7 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row8 - Column 1</td>
+            <td>Row8 - Column 2</td>
+            <td>Row8 - Column 3</td>
+            <td>Row8 - Column 4</td>
+            <td>Row8 - Column 5</td>
+            <td>Row8 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row9 - Column 1</td>
+            <td>Row9 - Column 2</td>
+            <td>Row9 - Column 3</td>
+            <td>Row9 - Column 4</td>
+            <td>Row9 - Column 5</td>
+            <td>Row9 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row10 - Column 1</td>
+            <td>Row10 - Column 2</td>
+            <td>Row10 - Column 3</td>
+            <td>Row10 - Column 4</td>
+            <td>Row10 - Column 5</td>
+            <td>Row10 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row11 - Column 1</td>
+            <td>Row11 - Column 2</td>
+            <td>Row11 - Column 3</td>
+            <td>Row11 - Column 4</td>
+            <td>Row11 - Column 5</td>
+            <td>Row11 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row12 - Column 1</td>
+            <td>Row12 - Column 2</td>
+            <td>Row12 - Column 3</td>
+            <td>Row12 - Column 4</td>
+            <td>Row12 - Column 5</td>
+            <td>Row12 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row13 - Column 1</td>
+            <td>Row13 - Column 2</td>
+            <td>Row13 - Column 3</td>
+            <td>Row13 - Column 4</td>
+            <td>Row13 - Column 5</td>
+            <td>Row13 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row14 - Column 1</td>
+            <td>Row14 - Column 2</td>
+            <td>Row14 - Column 3</td>
+            <td>Row14 - Column 4</td>
+            <td>Row14 - Column 5</td>
+            <td>Row14 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row15 - Column 1</td>
+            <td>Row15 - Column 2</td>
+            <td>Row15 - Column 3</td>
+            <td>Row15 - Column 4</td>
+            <td>Row15 - Column 5</td>
+            <td>Row15 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row16 - Column 1</td>
+            <td>Row16 - Column 2</td>
+            <td>Row16 - Column 3</td>
+            <td>Row16 - Column 4</td>
+            <td>Row16 - Column 5</td>
+            <td>Row16 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row17 - Column 1</td>
+            <td>Row17 - Column 2</td>
+            <td>Row17 - Column 3</td>
+            <td>Row17 - Column 4</td>
+            <td>Row17 - Column 5</td>
+            <td>Row17 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row18 - Column 1</td>
+            <td>Row18 - Column 2</td>
+            <td>Row18 - Column 3</td>
+            <td>Row18 - Column 4</td>
+            <td>Row18 - Column 5</td>
+            <td>Row18 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row19 - Column 1</td>
+            <td>Row19 - Column 2</td>
+            <td>Row19 - Column 3</td>
+            <td>Row19 - Column 4</td>
+            <td>Row19 - Column 5</td>
+            <td>Row19 - Column 6</td>
+        </tr>
+
+        <tr>
+            <td>Row20 - Column 1</td>
+            <td>Row20 - Column 2</td>
+            <td>Row20 - Column 3</td>
+            <td>Row20 - Column 4</td>
+            <td>Row20 - Column 5</td>
+            <td>Row20 - Column 6</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
+<footer>
+    <p>UBS Capstone Project<br>By Team: Code of Duty</p>
+</footer>
+</body>
+</html>
