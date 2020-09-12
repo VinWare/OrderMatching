@@ -1,10 +1,8 @@
 package org.cod.ordermatching.controllers;
 
-import org.cod.ordermatching.Order;
-
 import java.util.*;
 
-public class RandomGenerator
+public class RamdomGeneration
 {
     public double getBid(double currentPrice)
     {
@@ -19,17 +17,15 @@ public class RandomGenerator
     }
 
 
-    public void orderMatching()
+    public void randomGeneration()
     {
         String stock = "MSFT";
-        //List<Double> prices = new ArrayList<Double>();
+        List<Double> prices = new ArrayList<Double>();
         double initialPrice = 100;
         double currentPrice = initialPrice;
-        //prices.add(currentPrice);
-        //SortedMap<Double, List<Integer>> bids = new TreeMap<Double, List<Integer>>(Collections.reverseOrder());
-        //SortedMap<Double, List<Integer>> asks = new TreeMap<Double, List<Integer>>();
-        SortedMap<Double, List<Order>> bids = new TreeMap<Double, List<Order>>(Collections.reverseOrder());
-        SortedMap<Double, List<Order>> asks = new TreeMap<Double, List<Order>>();
+        prices.add(currentPrice);
+        SortedMap<Double, List<Integer>> bids = new TreeMap<Double, List<Integer>>(Collections.reverseOrder());
+        SortedMap<Double, List<Integer>> asks = new TreeMap<Double, List<Integer>>();
         /*
         HashMap<Integer,> rejected_orders = new HashMap<Integer,>();
 
@@ -53,37 +49,23 @@ public class RandomGenerator
         System.out.println("---------------------------------");
 
         for (int i = 0; i < 100; i++) {
-            Order order = new Order();
             orderId++;
-            order.setOrderID(orderId);
             Random rand = new Random();
             String choice = typeList.get(rand.nextInt(typeList.size()));
-            order.setType(choice);
             String choiceType = orderTypeList.get(rand.nextInt(orderTypeList.size()));
-            order.setCategory(choiceType);
             int quantity = rand.nextInt(1000)-10;
-            order.setQuantity(quantity);
             if (choice == "ask") {
                 double ask;
-                if (choiceType == "limit")
-                {
+                if (choiceType == "limit") {
                     ask = getAsk(currentPrice);
-                    order.setPrice(ask);
-                    if (ask < 0.9 * openingPrice || ask > 1.1 * openingPrice)
-                    {
+                    if (ask < 0.9 * openingPrice || ask > 1.1 * openingPrice) {
                         //add order in rejected table
                         continue;
                     }
-                }
-                else
-                {
+                } else {
                     if (bids.size() != 0)
-                    {
                         ask = bids.firstKey();
-                        order.setPrice(ask);
-                    }
-                    else
-                    {
+                    else {
                         //add order in rejected table
                         continue;
                     }
@@ -91,10 +73,10 @@ public class RandomGenerator
                 //add order in successful orders table
                 System.out.println("NEW ASK {" + choiceType + "}: " + ask + " " + quantity);
                 if (asks.containsKey(ask))
-                    asks.get(ask).add(order);
+                    asks.get(ask).add(quantity);
                 else {
-                    List<Order> dummy = new ArrayList<Order>();
-                    dummy.add(order);
+                    List<Integer> dummy = new ArrayList<Integer>();
+                    dummy.add(quantity);
                     asks.put(ask, dummy);
                 }
                 Check check = new Check();
@@ -124,16 +106,16 @@ public class RandomGenerator
                 //add order to successful table
                 System.out.println("NEW BID {" + choiceType + "}: " + bid + " " + quantity);
                 if (bids.containsKey(bid))
-                    bids.get(bid).add(order);
+                    bids.get(bid).add(quantity);
                 else {
-                    List<Order> dummy = new ArrayList<Order>();
-                    dummy.add(order);
+                    List<Integer> dummy = new ArrayList<Integer>();
+                    dummy.add(quantity);
                     bids.put(bid, dummy);
                 }
                 Check check = new Check();
                 //asks,bids,current_price=check_match(bid,asks,bids,current_price)
             }
-            //prices.add(currentPrice);
+            prices.add(currentPrice);
             System.out.println();
             System.out.println("MSFT Current Price: " + currentPrice);
             System.out.println("Bids: " + bids);

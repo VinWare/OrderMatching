@@ -1,13 +1,11 @@
 package org.cod.ordermatching.controllers;
 
-import org.cod.ordermatching.Order;
-
 import java.util.List;
 import java.util.SortedMap;
 
 public class Check
 {
-    private SortedMap<Double, List<Order>> asks, bids;
+    private SortedMap<Double, List<Integer>> asks, bids;
     private double currentPrice;
 /*
     def clean_orders(orders):
@@ -17,7 +15,7 @@ public class Check
             del new_orders[k]
         return new_orders*/
 
-    public SortedMap<Double, List<Order>> cleanOrders(SortedMap<Double, List<Order>> orders)
+    public SortedMap<Double, List<Integer>> cleanOrders(SortedMap<Double, List<Integer>> orders)
     {
         for(int i=0;i<orders.size();i++)
         {
@@ -27,15 +25,15 @@ public class Check
         return orders;
     }
 
-    public Check checkMatch(double ask, SortedMap<Double, List<Order>> bids, SortedMap<Double, List<Order>> asks, double current_price)
+    public Check checkMatch(double ask, SortedMap<Double, List<Integer>> bids, SortedMap<Double, List<Integer>> asks, double current_price)
     {
         int bid_quantity, ask_quantity;
         if(bids.containsKey(ask) && bids.get(ask).size()!=0)
         {
             while(true)
             {
-                bid_quantity = bids.get(ask).get(0).getQuantity();
-                ask_quantity = asks.get(ask).get(0).getQuantity();
+                bid_quantity = bids.get(ask).get(0);
+                ask_quantity = asks.get(ask).get(0);
                 if(ask_quantity < bid_quantity)
                 {
                     bid_quantity -= ask_quantity;
@@ -70,11 +68,11 @@ public class Check
         return this;
     }
 
-    public SortedMap<Double, List<Order>> getAsks() {
+    public SortedMap<Double, List<Integer>> getAsks() {
         return asks;
     }
 
-    public SortedMap<Double, List<Order>> getBids() {
+    public SortedMap<Double, List<Integer>> getBids() {
         return bids;
     }
 
