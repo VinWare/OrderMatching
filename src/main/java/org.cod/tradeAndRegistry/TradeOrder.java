@@ -2,15 +2,12 @@ package org.cod.tradeAndRegistry;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public  class TradeOrder implements Cloneable {
 
     @Id
     private int orderId;
-    //private List<Integer> tradeId = new ArrayList<>();
     private String orderTime;
     private int quantity;
     private String tradeType;
@@ -86,14 +83,6 @@ public  class TradeOrder implements Cloneable {
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
-
-//    public List<Integer> getTradeId() {
-//        return this.tradeId;
-//    }
-//
-//    public void setTradeId(int tradeId) {
-//        this.tradeId.add(tradeId);
-//    }
 
     public String getOrderTime() {
         return orderTime;

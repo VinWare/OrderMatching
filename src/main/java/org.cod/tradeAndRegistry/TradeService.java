@@ -1,6 +1,5 @@
 package org.cod.tradeAndRegistry;
 
-import org.cod.OMS.matchingSystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -103,14 +102,5 @@ public class TradeService {
     {
         m.cancelOrderUpdateInMap(t,unsuccessfullOrders,allOrders);
     }
-/*
-    TradeOrder t = m.generate(i,last,sd);
-            m.validateTradeForChecks(quantity,t,last);
-            if(m.validateTradeForChecks(quantity,t,last))
-            m.quantityUpdate(quantity,t);
-            else
-                    m.cancelOrderUpdateInMap(t,unsuccessfullOrders,allOrders);
-
-    last = m.matchTrade(buy_Orders,sell_Orders,allOrders,t,t.getPrice(),last,tradeId++,successfullOrders,quantity);*/
 
 }

@@ -29,7 +29,6 @@ public class Registry {
             //BUY ORDER DEFAULT
             TradeOrder buyOrder = new TradeOrder();
             buyOrder.setOrderId(0);
-            //buyOrder.setTradeId(0);
             buyOrder.setOrderTime(LocalTime.now().toString());
             buyOrder.setPrice(1);
             buyOrder.setQuantity(1);
@@ -40,7 +39,6 @@ public class Registry {
             //SELL ORDER DEFAULT
             TradeOrder sellOrder = new TradeOrder();
             sellOrder.setOrderId(0);
-            //sellOrder.setTradeId(0);
             sellOrder.setOrderTime(LocalTime.now().toString());
             sellOrder.setPrice(1);
             sellOrder.setQuantity(1);

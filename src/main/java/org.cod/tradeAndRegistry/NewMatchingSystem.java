@@ -2,7 +2,7 @@ package org.cod.tradeAndRegistry;
 import java.time.LocalTime;
 import java.util.*;
 
-//MATCHING BACKEND FILE CONTAINING ALL FUNCTIONS 
+//MATCHING BACKEND FILE CONTAINING ALL FUNCTIONS
 public class NewMatchingSystem {
 
     Registry registry = new Registry();
