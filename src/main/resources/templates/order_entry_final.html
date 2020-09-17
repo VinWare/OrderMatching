@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  </head>
+  <style>
+   
+   .header {
+  padding: 0.1px;
+  text-align: center;
+  background: #6B85EC;
+  color: white;
+  font-size: 7px;
+   }
+   
+   
+   
+   .Marquee-box {
+     position: relative;
+     display: inline-block;
+     width: 1500px;
+     height: 34px;   
+  }
+  .MyMarquee {
+     text-align: center;
+     font-style: italic;
+     font-weight: bold;
+     width: 100%;
+     height: 100%;
+     font-size: 22px;
+     border: 1px solid #E3D7D7;
+     color: #FFFFFF;
+     font-family: Arial, Helvetica, sans-serif;
+     vertical-align: middle;
+     -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+             box-sizing: border-box;
+     background-color: #837EE8;
+
+  }
+  .MyMarquee div {
+     display: inline-block;
+     vertical-align: middle;
+  }
+  .MyMarquee a, .MyMarquee img {
+     display: inline-block;
+     text-decoration: underline;
+     color: #FFFFFF;
+     vertical-align: middle;
+  }   
+   
+caption {
+  display: table-caption;
+  text-align: center;
+  font-weight: bold;
+}
+    .table-wrapper
+    { 
+    overflow: auto;
+    }
+   
+   #myTable{
+     font-family: 'helvetica neue',helvetica,arial,'lucida grande',sans-serif;
+     border-collapse: collapse;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  #myTable td{
+     border: solid 1px #A6BEF0;
+     padding: 10px;
+     font-size: 12px;
+     text-align: center;
+  }
+  #myTable tr{
+     background-color: #F7FEFF;
+     color: #000000;
+     overflow-y: scroll;
+  }
+  #myTable tr:hover{
+     background-color: #FFFFFF;
+     color: #000000;
+  }
+  #myTable th{
+     border: solid 1px #BFBFBF;
+     padding: 10px;
+     color: #000000;
+     background-color: #D4D4D4;
+     text-align: center;
+     font-size: 12px;
+  }
+
+  
+  footer {
+  text-align: center;
+  padding: 3px;
+  background-color: #6B85EC;
+  color: white;
+  height: 52px;
+}
+  .my-custom-scrollbar {
+   position: relative;
+   height: 455px;
+   overflow: auto;
+  }
+  .table-wrapper-scroll-y {
+   display: block;
+   overflow: auto;
+  }
+  
+.bg-container {
+   padding-left: 30%;
+   padding-right: 30%;
+   background: white;
+   background-size: cover;
+   background-position: center;
+    }
+    
+    
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=number], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 80%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+  </style>
+
+  
+  <body>
+
+  <div class="header">
+  <h1>Order Matching System</h1>
+</div>
+  <p>  </p>
+  <div align="center">
+    <a href="#" class="btn btn-info btn-sm">
+      <span class="glyphicon glyphicon-refresh"></span> Refresh</a>
+    
+    <a href="/start" class="btn btn-info btn-sm">
+      <span class=""></span>Start System</a>
+    
+    <a href="/pendingOrders" class="btn btn-info btn-sm">
+      <span class=""></span>Pending Orders</a>
+    
+    <a href="/successfulOrders" class="btn btn-info btn-sm">
+      <span class=""></span>Successful Trades</a>
+    
+    <a href="/rejectedOrders" class="btn btn-info btn-sm">
+      <span class=""></span>Rejected Orders</a>
+ </div>
+ <p>  </p>
+ <div class="Marquee-box">
+   <marquee class="MyMarquee" id="my_marquee" direction="left" behavior="7" scrollamount="10" onmouseover="this.stop()" onmouseout="this.start()">
+     <div>Microsoft Stock:</div>
+     <div>Current Price:</div>
+       <div th:text="${current}"></div>
+     <div>Last Bid:</div>
+       <div th:text="${bid}"></div>
+     <div>Last Ask:</div>
+           <div th:text="${ask}"></div>
+   </marquee>
+ </div>     
+ 
+ <div class="bg-container">
+   <form >
+        <div class="text-center padding">
+        <div class="card border-success mb-3">
+              <div class="card-header" style="font-size:20px;font-weight:bold">New Order</div>
+              <div class="card-body text-success">
+                <label for="category">Order Category</label>
+                <select id="category" name="category">
+                  <option value="buy">Buy</option>
+                  <option value="sell">Sell</option>
+                </select>
+                <label for="type">Order Type</label>
+                <select id="type" name="type" placeholder="limit">
+                  <option value="limit">Limit</option>
+                  <option value="market">Market</option>
+                </select>
+
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" placeholder="quote price">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" placeholder="no. of shares">
+                <input type="submit" value="Submit">
+                </div></div></div>
+      </form >
+   </div>
+            
+
+    <footer>
+    <p>UBS Capstone Project<br>By Team: Code of Duty</p>
+    </footer>
+  </body>
+</html>

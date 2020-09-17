@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class TradeService {
@@ -27,6 +29,19 @@ public class TradeService {
     public static class Quantity{
         int buyQuantity = 0;
         int sellQuantity = 0;
+    }
+
+    public double getLast() {
+        return last;
+    }
+
+    public List<TradeOrder> getAllLimitByTradeType(String tradeType) {
+
+        return tradeRepository.
+                findByTradeType(tradeType).
+                stream().
+                filter(tradeOrder -> tradeOrder.getOrderType().equals("LIMIT")).
+                collect(Collectors.toUnmodifiableList());
     }
 
 
@@ -57,6 +72,10 @@ public class TradeService {
         }
         else
             cancelTrade(t);
+        for (int tr: allOrders.keySet()) {
+            tradeRepository.save(allOrders.get(tr));
+            System.out.println(allOrders.get(tr).getOrderId());
+        }
         //l.add(tradeOrder);
     }
 
@@ -67,7 +86,7 @@ public class TradeService {
     }
 
     public void start(){
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             TradeOrder t = TradeGenerator(m, i);
             if (tradeVaildator(t)) {
                 quantityUpdater(t);

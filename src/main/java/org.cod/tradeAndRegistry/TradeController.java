@@ -3,6 +3,7 @@ package org.cod.tradeAndRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -60,6 +61,7 @@ public class TradeController {
 
     @RequestMapping(method = RequestMethod.POST , value = "/Orders/AddOrder")
     public void addCourse(@RequestBody TradeOrder tradeOrder){
+        tradeOrder.setOrderTime(LocalTime.now().toString());
         tradeService.addTrade(tradeOrder);
     }
 

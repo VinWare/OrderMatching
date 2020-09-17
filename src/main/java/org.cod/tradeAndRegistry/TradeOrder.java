@@ -1,19 +1,22 @@
 package org.cod.tradeAndRegistry;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public  class TradeOrder implements Cloneable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
     private String orderTime;
     private int quantity;
     private String tradeType;
     private String orderType;
     private double price;
-    private String status;
+    private String status = "PENDING";
     private String tradeId = "";
 
     public String getTradeId() {
